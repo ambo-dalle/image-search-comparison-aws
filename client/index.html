@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FaceRecognition</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">
+    </head>
+    <body>
+    <div id="app">
+        <div class="ui inverted basic icon top fixed menu" style="height: 55px; background-color: #588c7e">
+            <div class="item" style="font-size: 2em; width: 400px;">
+                <i class="large xing square icon"></i>
+                    Forgeted Friend
+            </div>
+            <div class="right item">
+                <fb:login-button scope="public_profile,email,publish_actions" onlogin="checkLoginState();" data-auto-logout-link="true">
+                </fb:login-button>
+            </div>
+        </div>
+        <div class="ui text container" style="padding-top: 60px;">
+            <div class="ui form">
+                <div class="filed">
+                    <img class="ui fluid image" :src="url_image">
+                </div>
+                <div class="field">
+                    <label>Input your url image: </label>
+                    <input type="text" name="urlname" placeholder="Input url in this place..." v-model="url_image">
+                </div>
+                <div class="filed">
+                    <button class="ui blue button">Process</button>
+                </div>
+            </div>
+        </div>
+        <div class="ui modal" id="hasil" @click="getProccessFind">
+            <i class="close icon"></i>
+            <div class="header">
+                Profile Picture
+            </div>
+            <div class="image content">
+                <div class="ui medium image">
+                <img :src="url_image">
+                </div>
+                <div class="description">
+                <div class="ui header">We've auto-chosen a profile image for you.</div>
+                <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+                <p>Is it okay to use this photo?</p>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui black deny button">
+                Nope
+                </div>
+                <div class="ui positive right labeled icon button">
+                Yep, that's me
+                <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script src="/js/vues.js"></script>
+    <script src="/js/vue_components.js"></script>
+    </body>
+</html>
